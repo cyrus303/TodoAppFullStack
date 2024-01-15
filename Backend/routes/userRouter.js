@@ -17,30 +17,45 @@ router.post('/signup', async (req, res) => {
     const userCheck = userNameSchema.safeParse(username);
     const passwordCheck = userPasswordSchema.safeParse(password);
 
+    // Check for empty input
+    if (
+      username.trim().length === 0 ||
+      password.trim().length === 0
+    ) {
+      return res.status(400).json({msg: 'Input cannot be empty'});
+    }
+
     if (userCheck.success && passwordCheck.success) {
       const existingUserCheck = await userModel.find({username});
 
       if (existingUserCheck.length > 0) {
-        res
+        return res
           .status(400)
           .json({msg: 'Username not available, choose another'});
       } else {
-        const salt = await bcrypt.genSalt();
-        const hashPassword = await bcrypt.hash(password, salt);
+        try {
+          const salt = await bcrypt.genSalt();
+          const hashPassword = await bcrypt.hash(password, salt);
 
-        const userDetail = await userModel.create({
-          username,
-          hashPassword,
-        });
+          const userDetail = await userModel.create({
+            username,
+            hashPassword,
+          });
 
-        res.status(201).json({msg: 'Signup successful'});
+          return res.status(201).json({msg: 'Signup successful'});
+        } catch (hashError) {
+          console.error('Error during password hashing:', hashError);
+          return res
+            .status(500)
+            .json({msg: 'User signup unsuccessful'});
+        }
       }
     } else {
-      res.status(400).json({msg: 'Invalid input formats'});
+      return res.status(400).json({msg: 'Invalid input formats'});
     }
   } catch (error) {
     console.error('Error during user signup:', error);
-    res.status(500).json({msg: 'User signup unsuccessful'});
+    return res.status(500).json({msg: 'User signup unsuccessful'});
   }
 });
 

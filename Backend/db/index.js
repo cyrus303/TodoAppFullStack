@@ -6,4 +6,11 @@ mongoose
   )
   .then(console.log('connected to DB'));
 
-module.exports = '';
+const userSchema = mongoose.Schema({
+  username: String,
+  hashPassword: String,
+});
+
+const userModel = mongoose.model('userModel', userSchema);
+
+module.exports = userModel;

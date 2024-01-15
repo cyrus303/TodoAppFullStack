@@ -4,8 +4,7 @@ const jwt = require('jsonwebtoken');
 const zod = require('zod');
 const bcrypt = require('bcrypt');
 
-const authenticateUser = require('../middleware/authenticateUser');
-const userModel = require('../db');
+const {userModel} = require('../db');
 
 const userNameSchema = zod.string();
 const userPasswordSchema = zod.string();
@@ -71,7 +70,7 @@ router.post('/signin', async (req, res) => {
     }
   } catch (error) {
     console.error('Error during user signin:', error);
-    res.status(500).json({msg: 'Internal server error'});
+    res.status(500).json({msg: 'User signin unsuccessful'});
   }
 });
 

@@ -11,6 +11,13 @@ const userSchema = mongoose.Schema({
   hashPassword: String,
 });
 
-const userModel = mongoose.model('userModel', userSchema);
+const todoSchema = mongoose.Schema({
+  completed: Boolean,
+  todoText: String,
+  username: String,
+});
 
-module.exports = userModel;
+const userModel = mongoose.model('userModel', userSchema);
+const todoModel = mongoose.model('todoModel', todoSchema);
+
+module.exports = {userModel, todoModel};

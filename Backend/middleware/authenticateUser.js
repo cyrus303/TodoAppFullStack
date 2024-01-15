@@ -7,7 +7,7 @@ const authenticateUser = (req, res, next) => {
     console.log(decoded);
     next();
   } catch (error) {
-    res.send('invalid credentials');
+    res.send('valid jwt token required');
   }
 };
 

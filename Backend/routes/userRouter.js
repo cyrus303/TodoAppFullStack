@@ -1,13 +1,24 @@
 const {Router} = require('express');
 const router = Router();
 const jwt = require('jsonwebtoken');
+const zod = require('zod');
 const authenticateUser = require('../middleware/authenticateUser');
 
-console.log('hello from user router');
+const userNameSchema = zod.string();
+const userPasswordSchema = zod.string();
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', (req, res) => {
   const {username, password} = req.body;
-  const token = jwt.sign({username}, 'testing123');
+
+  const userCheck = userNameSchema.safeParse(username);
+  const passwordCheck = userPasswordSchema.safeParse(password);
+
+  if (userCheck.success && passwordCheck.success) {
+    const token = jwt.sign({username}, 'testing123');
+    res.send(token);
+  } else {
+    res.status(400).json({msg: 'invalid formats'});
+  }
 });
 
 router.post('/signin', authenticateUser, (req, res) => {

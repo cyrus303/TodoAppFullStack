@@ -6,6 +6,7 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   /* min-width: 700px; */
 `;
 
@@ -83,6 +84,13 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const StyledBtnLogout = styled(StyledButton)`
+  width: auto;
+  position: absolute;
+  right: 5rem;
+  top: 1rem;
+`;
+
 export const StyledForm = styled.form`
   display: flex;
   justify-content: center;
@@ -93,4 +101,8 @@ export const StyledForm = styled.form`
 export const StyledA = styled.a`
   color: #d98326;
   font-weight: 700;
+`;
+
+export const StyledP = styled.p`
+  margin-top: 1rem;
 `;

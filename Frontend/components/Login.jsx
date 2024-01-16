@@ -9,6 +9,7 @@ import {
   StyledForm,
   StyledBtnContainer,
   StyledA,
+  StyledP,
 } from './styledComponents/LoginStyledComponents';
 
 const makeApiRequest = async (url, method, data) => {
@@ -102,7 +103,7 @@ const Login = () => {
           )}
         </StyledBtnContainer>
         {loginStatus ? (
-          <p>
+          <StyledP>
             no account yet?{' '}
             <StyledA
               onClick={() => {
@@ -111,9 +112,9 @@ const Login = () => {
             >
               Sign up
             </StyledA>
-          </p>
+          </StyledP>
         ) : (
-          <p>
+          <StyledP>
             already have an account?{' '}
             <StyledA
               onClick={() => {
@@ -122,7 +123,7 @@ const Login = () => {
             >
               Login
             </StyledA>
-          </p>
+          </StyledP>
         )}
       </StyledForm>
     </CardContainer>

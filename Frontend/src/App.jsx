@@ -5,6 +5,7 @@ import './App.css';
 import Todo from '../components/Todo';
 import Login from '../components/Login';
 import Navbar from '../components/Navbar';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <div className="route-container">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/todo" element={<Todo />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/todo" element={<Todo />} />
+          </Route>
         </Routes>
       </div>
     </div>

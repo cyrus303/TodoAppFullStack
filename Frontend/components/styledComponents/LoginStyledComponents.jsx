@@ -25,6 +25,7 @@ export const CardContainer = styled.div`
   margin-top: 10rem;
   /* margin-bottom: 15rem; */
   border: 1px solid #737373;
+  position: relative;
 `;
 
 export const StyledH2 = styled.h2`
@@ -55,6 +56,10 @@ export const StyledInput = styled.input`
     border-color: #007bff; /* Change focus border color as needed */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Change focus box-shadow as needed */
   }
+`;
+
+export const StyledErrorInput = styled(StyledInput)`
+  border: 2px solid red;
 `;
 
 export const StyledBtnContainer = styled.div`
@@ -105,4 +110,13 @@ export const StyledA = styled.a`
 
 export const StyledP = styled.p`
   margin-top: 1rem;
+`;
+
+export const StyledActionP = styled.p`
+  color: #008000c7;
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: capitalize;
 `;

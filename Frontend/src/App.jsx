@@ -1,4 +1,3 @@
-import todoLogo from './assets/todoLogo.png';
 import {Routes, Route} from 'react-router-dom';
 
 import './App.css';

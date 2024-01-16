@@ -79,3 +79,39 @@ export const StyledTodoItem = styled.li`
   background-color: transparent;
   flex-direction: column;
 `;
+
+export const StyledBtnDelete = styled.button`
+  background-color: #d98326;
+  color: #fff; /* Text color */
+  padding: 10px 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 1rem;
+  float: right;
+  &:hover {
+    background-color: #555; /* Change hover color as needed */
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(115, 115, 115, 0.7); /* Change focus box-shadow as needed */
+  }
+`;
+
+export const StyledImage = styled.img`
+  width: 200px;
+  opacity: 0.4;
+  /* margin: 0 auto;
+  margin-top: 5rem; */
+`;
+
+export const StyledDivCenter = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+`;

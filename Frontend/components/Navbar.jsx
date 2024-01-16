@@ -3,7 +3,7 @@ import logo from '../src/assets/todoLogo.png';
 import {
   NavbarContainer,
   StyledImg,
-} from './styledComponents/styledComponents';
+} from './styledComponents/LoginStyledComponents';
 
 const Navbar = () => {
   return (
